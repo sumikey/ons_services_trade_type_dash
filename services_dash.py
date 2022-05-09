@@ -42,7 +42,8 @@ st.title('UK Services Trade by Type and Partner')
 st.write('---')
 st.write("""This dashboard analyses the UK's services trade by services trade type and partner,
 based on data from the UK's [Office for National Statistics](https://www.ons.gov.uk/businessindustryandtrade/internationaltrade/datasets/uktradeinservicesservicetypebypartnercountrynonseasonallyadjusted).
-This dataset is not seasonally-adjusted. All data is published in GBP Millions""" )
+This dataset is not seasonally-adjusted. All data is published in GBP Millions. Some quarterly values are not published by the ONS
+because they would be disclosive: this dashboard does not fill or interpolate these values, they are left blank so as not to mislead.""" )
 
 #------------------------- SECTION FOR CHOOSING PARAMETERS TO ANALYSE
 
@@ -192,6 +193,12 @@ st.line_chart(df_plot2.pct_change(4, fill_method=None).mul(100))
 #------------------------- PLOTLY TREEMAP OF EXPORTS TO PARTNER AS SHARE OF WORLD
 
 st.write('---')
+
+st.subheader(f"UK {flow} of '{service}' {word_to_from} {partner} in context of global {flow}")
+st.write("""This section shows the selected type and flow of trade with the given partner in the context of the UK's trade with
+all countries. The degree of rolling can be set using the slider - set as '1' to view just a single quarter, or set as four to
+see four quarters rolling sum for the chose metric (i.e. one year). The date through which to roll to can also be set using
+a separate slider.""")
 
 # create a list of only countries - no aggregates
 list_countries = list(dfq.country.unique())
