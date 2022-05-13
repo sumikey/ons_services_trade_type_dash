@@ -37,6 +37,9 @@ dfq.columns = ['direction', 'code_desc', 'code', 'code_1dig', 'type', 'country_c
 
 #------------------------- TITLE AND BASIC PAGE INTRO
 
+# setting the page to open in wide mode
+st.set_page_config(page_title = "UK Services Exports", page_icon = 'uk')
+
 # make a title & Intro section
 st.title('UK Services Trade by Type and Partner')
 st.write('---')
@@ -254,3 +257,8 @@ st.write(f"UK {flow} of '{service}' {word_to_from} {partner} in context of globa
 
 # use streamlit to display the plotly chart
 st.plotly_chart(fig, use_container_width=True)
+
+# add a line at the end to finish
+st.write('---')
+
+#-------------------------
